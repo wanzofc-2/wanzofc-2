@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In</title>
+    <style>
+      /* Sertakan gaya yang sama seperti halaman login sebelumnya */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body,
+      input {
+        font-family: "Poppins", sans-serif;
+      }
+
+      .container {
+        position: relative;
+        width: 100%;
+        background-color: #fff;
+        min-height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .form-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 2rem;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .title {
+        font-size: 2rem;
+        color: #444;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .input-field {
+        width: 100%;
+        background-color: #f0f0f0;
+        margin: 10px 0;
+        height: 50px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      .input-field input {
+        width: 100%;
+        background: none;
+        outline: none;
+        border: none;
+        line-height: 1;
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      .input-field i {
+        margin-right: 10px;
+        color: #aaa;
+      }
+
+      .btn {
+        width: 100%;
+        background-color: #5995fd;
+        border: none;
+        outline: none;
+        height: 50px;
+        border-radius: 25px;
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin: 20px 0;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #4d84e2;
+      }
+
+      .social-text {
+        text-align: center;
+        font-size: 1rem;
+        margin-top: 10px;
+      }
+
+      .social-media {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 1px solid #333;
+        color: #333;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      .social-icon:hover {
+        color: #4481eb;
+        border-color: #4481eb;
+      }
+
+      .sign-up-link {
+        text-align: center;
+        font-size: 1rem;
+        margin-top: 15px;
+      }
+
+      .sign-up-link a {
+        color: #5995fd;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .sign-up-link a:hover {
+        color: #4d84e2;
+      }
+
+      /* Logo Bulat setelah tombol Sign In */
+      .circle-logo {
+        width: 60px;
+        height: 60px;
+        background-color: #5995fd;
+        color: white;
+        font-size: 2rem;
+        border-radius: 50%;
+        display: block;
+        margin: 30px auto 0;
+        text-align: center;
+        line-height: 60px;
+        cursor: pointer;
+      }
+
+      .circle-logo:hover {
+        background-color: #4d84e2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <h2 class="title">Sign In</h2>
+        <form id="sign-in-form" onsubmit="handleSignIn(event)">
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <input type="email" id="login-email" placeholder="Email" required />
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="login-password" placeholder="Password" required />
+          </div>
+          <button type="submit" class="btn">Sign In</button>
+        </form>
+
+        <p class="social-text">Or Sign in with social platforms</p>
+        <div class="social-media">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-google"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+
+        <!-- Logo Bulat yang muncul setelah klik Sign In -->
+        <div id="circle-logo-container" style="display: none;">
+          <button id="circle-logo" class="circle-logo" onclick="redirectToDashboard()">
+            <!-- Icon atau gambar bisa ditambahkan di sini -->
+            <span>🔑</span> 
+          </button>
+        </div>
+
+        <!-- Link Pendaftaran -->
+        <div class="sign-up-link">
+          <p>Belum ada akun? <a href="signup.html">Klik disini</a></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script>
+      function handleSignIn(event) {
+        event.preventDefault(); // Mencegah form dikirim
+
+        const email = document.getElementById("login-email").value;
+        const password = document.getElementById("login-password").value;
+
+        // Di sini Anda akan menangani logika login, seperti mengirim data ke server
+        console.log('Sign In:', email, password);
+
+        // Setelah login berhasil, tampilkan logo bulat
+        document.getElementById("circle-logo-container").style.display = "block";
+      }
+
+      function redirectToDashboard() {
+        // Mengarahkan ke dashboard.html ketika tombol logo bulat diklik
+        window.location.href = "dashboard.html";
+      }
+    </script>
+ <script src="app.js"></script>
+  </body>
+</html>
